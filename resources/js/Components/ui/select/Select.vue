@@ -1,0 +1,25 @@
+<script setup>
+import { SelectRoot, useForwardPropsEmits } from 'radix-vue';
+
+const props = defineProps({
+  open: { type: Boolean, required: false },
+  defaultOpen: { type: Boolean, required: false },
+  defaultValue: { type: String, required: false },
+  modelValue: { type: [String, Array], required: false },
+  dir: { type: String, required: false },
+  name: { type: String, required: false },
+  autocomplete: { type: String, required: false },
+  disabled: { type: Boolean, required: false },
+  required: { type: Boolean, required: false },
+  multiple: { type: Boolean, required: false }
+});
+const emits = defineEmits(['update:modelValue', 'update:open']);
+
+const forwarded = useForwardPropsEmits(props, emits);
+</script>
+
+<template>
+  <SelectRoot v-bind="forwarded">
+    <slot />
+  </SelectRoot>
+</template>

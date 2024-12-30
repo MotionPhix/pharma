@@ -1,0 +1,54 @@
+<script setup lang="ts">
+import { Head } from '@inertiajs/vue3';
+import SearchPharmacy from './Partials/SearchPharmacy.vue';
+import NavigationMap from '@/Components/map/NavigationMap.vue';
+import MapLayout from "@/Layouts/MapLayout.vue";
+
+/*const getLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      location.value = `${latitude},${longitude}`; // Set location to lat,long format
+      findPharmacies(); // Automatically find pharmacies using the detected location
+    }, () => {
+      alert('Unable to retrieve your location.');
+    });
+  } else {
+    alert('Geolocation is not supported by this browser.');
+  }
+};
+
+const findPharmacies = async () => {
+  try {
+    const response = await router.get('/pharmacies', {
+      params: { location: location.value },
+    });
+    pharmacies.value = response.data.pharmacies;
+  } catch (error) {
+    console.error('Error fetching pharmacies:', error);
+  }
+};
+
+onMounted(() => {
+  pharmacies.value = props.pharmacies;
+});*/
+</script>
+
+<template>
+  <Head>
+    <title>
+      Pharmacies near to you
+    </title>
+  </Head>
+
+  <MapLayout>
+
+    <SearchPharmacy />
+
+    <article class="mt-12">
+      <NavigationMap />
+    </article>
+
+  </MapLayout>
+</template>
+
